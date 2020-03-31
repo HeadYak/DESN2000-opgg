@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Seddit</title>
+    <title>BlitzPlus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- You can add your styles and scripts here -->
     
@@ -26,15 +26,18 @@
             }
             </style>
         <header class='banner' id="nav">
-            <h1 id="logo" class="flex-center">Seddit</h1>
-            <ul class='nav'>
+            <h1 id="logo" class="flex-center">BlitzPlus</h1>
+            <ul id='navbar" class='nav'>
+                <li class='nav-item'>
+                    <button id='homebtn' data-id-login class="button button-primary">Home</button>
+                </li>
+                <li class='nav-item'>
+                    <button id='championbtn' data-id-login class="button button-primary">Champions</button>
+                </li>
+                <li class='nav-item'>
+                    <button id='championbtn' data-id-login class="button button-primary">Leaderboards</button>
+                </li>
                
-                <li class='nav-item'>
-                    <button data-id-login class="button button-primary">Log In</button>
-                </li>
-                <li class='nav-item'>
-                    <button data-id-signup class="button button-secondary">Sign Up</button>
-                </li>
             </ul>
         </header>
         <main role='main'>
@@ -44,28 +47,25 @@
                     <button class="button button-secondary">Post</button>
                 </div>
                 <li class="nav-item">
-                    <input id="search" data-id-search placeholder="Search Seddit" type="search" />
+                    <input id="search" data-id-search placeholder="Search Summoner" type="search" />
                 </li>
                 <li class='nav-item'>
                     <button id='searchbtn' data-id-login class="button button-primary">Search</button>
                 </li>
-                <li class="post" data-id-post>
+                <li  class="post" data-id-post>
                     <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avenger’s Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
+                    <div id = 'content' class="content">
+                        <h4 id='summonername' data-id-title class="post-title alt-text">Welcome</h4>
+                        
                     </div>
                 </li>
                 
             </ul>
         </main>
-        <footer>
-            <p>Seddit example</p>
-        </footer>
+        
         
     </div> 
-    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}" ></script>
+    <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
 </body>
 
 </html>

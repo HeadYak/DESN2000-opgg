@@ -7,8 +7,7 @@
     <title>Seddit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- You can add your styles and scripts here -->
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/post.css" />
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='provided.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='post.css') }}">
 </head>
@@ -47,6 +46,9 @@
                 <li class="nav-item">
                     <input id="search" data-id-search placeholder="Search Seddit" type="search" />
                 </li>
+                <li class='nav-item'>
+                    <button id='searchbtn' data-id-login class="button button-primary">Search</button>
+                </li>
                 <li class="post" data-id-post>
                     <div class="vote" data-id-upvotes></div>
                     <div class="content">
@@ -63,7 +65,7 @@
         </footer>
         
     </div> 
-    <script type="text/javascript" src="index.js" ></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}" ></script>
 </body>
 
 </html>

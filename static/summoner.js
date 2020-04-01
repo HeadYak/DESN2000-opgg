@@ -1,19 +1,60 @@
+
 export default summoner
-function summoner(apikey) {
+const apikey = 'RGAPI-098d1c31-f601-45f7-96f5-20887a7b5255'
+
+let summonerimg = document.createElement('img')
+document.getElementById('searchbtn').addEventListener('click', () => {
+    if ( document.getElementById('search').value == '') {
+      window.alert('Please enter summoner name')
+    }
+    else {
+      summoner(apikey, summonerimg)
+    }
+});
+function summoner(apikey, summonerimg) {
+    
+    let content = document.getElementById('content')
+    
+    var ranked = {
+        'RANKED_SOLO_5x5':'Ranked Solo'
+    }
     const options = {
         method: 'GET'
     }
     const summoner = document.getElementById('search').value 
     
     document.getElementById('search').value = ''
-    console.log('hello')
+    //console.log('hello')
     fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=${apikey}`, options)
     .then(res => (res.json()))
     .then(data => {
         let summonername = document.getElementById('summonername')
-        summonername.innerHTML = data.name + ' ' + 'Level: ' + data.summonerLevel
-        let summonerimg = document.createElement('img')
-        document.getElementById('content').append(summonerimg)
-        summonerimg.src = `https://ddragon.leagueoflegends.com/cdn/9.2.1/img/profileicon/${data.profileIconId}.png`
+        summonername.innerText = data.name + ' ' + 'Level: ' + data.summonerLevel
+        content.insertBefore(summonerimg, content.children[1])
+        let acctid = data.accountId
+        if (summonerimg == null) {
+            alert(null)
+        }
+        summonerimg.src = `https://opgg-static.akamaized.net/images/profile_icons/profileIcon${data.profileIconId}.jpg?image=q_auto&v=1518361200`
+        let summonerid = data.id
+        fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerid}?api_key=${apikey}`)
+        .then(res => (res.json()))
+        .then(league => {
+            //console.log(league)
+            let queue = document.getElementById('queue')
+            queue.innerText = ranked[league[0].queueType] 
+            document.getElementById('rank').innerText =  league[0].tier + ' ' + league[0].rank + ' ' + league[0].leaguePoints + ' LP'
+            document.getElementById('WL').innerText = 'Wins: ' + league[0].wins + ' Losses: ' + league[0].losses 
+ 
+        })
+        fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/${acctid}?endIndex=5&beginIndex=0&api_key=${apikey}`)
+        .then(res => res.json())
+        .then(matchhist => {
+            for (const match of matchhist['matches']) {
+                fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matches/${match['gameId']}?api_key=${apikey}`)
+                .then( res => res.json())
+                .then(matchinfo => console.log(matchinfo))
+            }
+        })
     })
 }

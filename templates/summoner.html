@@ -47,13 +47,18 @@
             <ul id="feed" data-id-feed>
                 <div class="feed-header">
                     <h3 class="feed-title alt-text">BlitzPlus</h3>
-                    <button class="button button-secondary">Post</button>
+                    
                 </div>
-                
+                <li class="nav-item">
+                    <input id="search" data-id-search placeholder="Search Summoner" type="search" />
+                </li>
+                <li class='nav-item'>
+                    <button id='searchbtn' data-id-login class="button button-primary">Search</button>
+                </li>
                 <li  class="post" data-id-post>
                     <div class="vote" data-id-upvotes></div>
                     <div id = 'content' class="content">
-                        <h4 id='summonername' data-id-title >Welcome</h4>
+                        <h4 id='summonername' data-id-title ></h4>
                         <p id = "queue">  </p>
                         <p id = "rank">  </p>
                         
@@ -68,6 +73,7 @@
         
         
     </div> 
+    <script type="module" src="{{ url_for('static', filename='summoner.js') }}" ></script>
     <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
 </body>
 

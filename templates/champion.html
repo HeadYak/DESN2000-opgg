@@ -46,19 +46,36 @@
         <main role='main'>
             <ul id="feed" data-id-feed>
                 <div class="feed-header">
-                    <h3 class="feed-title alt-text">BlitzPlus</h3>
-                    <button class="button button-secondary">Post</button>
+                    <h3 class="feed-title alt-text">Champions</h3>
+                    
                 </div>
-                
+                <li class="nav-item">
+                    
+                </li>
+                <li class='nav-item'>
+                    
+                </li>
                 <li  class="post" data-id-post>
                     <div class="vote" data-id-upvotes></div>
                     <div id = 'content' class="content">
-                        <h4 id='summonername' data-id-title >Welcome</h4>
-                        <p id = "queue">  </p>
-                        <p id = "rank">  </p>
-                        
-                        <p id = "WL">  </p>
-                        
+                    <table style="width:100%">
+                        <tr>
+                            <th>Champion</th>
+                            <th>Winrate</th>
+                            <th>Pickrate</th>
+                        </tr>
+                        <tr>
+                            <td>Aatrox</td>
+                            <td>48.72%	</td>
+                            <td>10.81%</td>
+                        </tr>
+                        <tr>
+                            <td>Ahri</td>
+                            <td>51.14%	</td>
+                            <td>5.46%</td>
+                        </tr>
+                        </table>   
+                         
                     </div>
                     
                 </li>
@@ -69,6 +86,7 @@
         
     </div> 
     <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
+    <script type="module" src="{{ url_for('static', filename='champion.js') }}" ></script>
 </body>
 
 </html>

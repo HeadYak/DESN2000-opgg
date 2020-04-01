@@ -5,6 +5,14 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/champions')
+def champion():
+    return render_template('champion.html')
+
+@app.route('/summoner')
+def summoner():
+    return render_template('summoner.html')
+
 if __name__ == '__main__':
     #users.clear()
     #messages.clear()

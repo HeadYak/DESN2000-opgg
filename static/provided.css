@@ -181,3 +181,12 @@ input[type=text], input[type=password] {
   text-decoration: none;
   cursor: pointer;
 }
+div {
+ 
+  padding-right: 50px;
+  
+  padding-left: 50px;
+}
+table {
+  border-spacing: 15px;
+}

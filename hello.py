@@ -12,6 +12,10 @@ def champion():
 @app.route('/summoner')
 def summoner():
     return render_template('summoner.html')
+@app.route('/leaderboard')
+def leaderboard():
+    return render_template('leaderboard.html')
+
 
 if __name__ == '__main__':
     #users.clear()

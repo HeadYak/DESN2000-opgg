@@ -53,7 +53,23 @@ function summoner(apikey, summonerimg) {
             for (const match of matchhist['matches']) {
                 fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matches/${match['gameId']}?api_key=${apikey}`)
                 .then( res => res.json())
-                .then(matchinfo => console.log(matchinfo))
+                .then(matchinfo => {
+                    let x = document.getElementById("matchhist")
+                    var row = x.insertRow(-1)
+                    var time = row.insertCell(0)
+                    var mode = row.insertCell(-1)
+                    var pr = row.insertCell(-1)
+                    const date = new Date(parseInt(matchinfo['gameCreation']))
+                    const year = date.getFullYear();
+                    const month = date.getMonth();
+                    const day = date.getDate();
+                    const hour = date.getHours()
+                    const minute =  "0" + date.getMinutes()
+                    let timestamp = year + "-" + month + "-" + day + " " + hour + ":" + minute.substr(-2)
+                    time.innerText = timestamp 
+                    
+                    console.log(matchinfo)
+                })
             }
         })
     })

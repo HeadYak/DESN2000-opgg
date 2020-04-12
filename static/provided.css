@@ -190,3 +190,9 @@ div {
 table {
   border-spacing: 15px;
 }
+td {
+  height: 35px;
+  width: 35px;
+ 
+}
+

@@ -58,35 +58,135 @@
                 <li  class="post" data-id-post>
                     
                     <div id = 'content' class="content">
-                    <table style="width:100%">
+                    <table id = 'champlist' style="width:100%" >
                         <tr>
                             <th>Champion</th>
-                            <th>Winrate</th>
-                            <th>Pickrate</th>
-                        </tr>
-                        <tr>
-                            <td>Aatrox</td>
-                            <td>48.72%	</td>
-                            <td>10.81%</td>
-                        </tr>
-                        <tr>
-                            <td>Ahri</td>
-                            <td>51.14%	</td>
-                            <td>5.46%</td>
-                        </tr>
-                        </table>   
+                            <th onclick="sortTable(1)">Winrate</th>
+                            <th onclick="sortTable(2)">Pickrate</th>
+                          </tr>
+                    </table>   
                          
                     </div>
                     
                 </li>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      
+                      <table id = 'champinfo' style="width:100%" >
+                        <tr><th id = 'champname'> </th></tr>
+                        <tr>
+                            <th>Summoner Spells</th>
+                            <th>Winrate</th>
+                            <th>Pickrate</th>
+                            <th>Starter Items</th>
+                            <th>Winrate</th>
+                            <th>Pickrate</th>
+                            <th>Core Build</th>
+                            <th>Winrate</th>
+                            <th>Pickrate</th>
+                            <th>Primary Runes</th>
+                            <th>Secondary Runes</th>
+                            <th>Winrate</th>
+                            <th>Pickrate</th>
+                            
+                        </tr>
+                        <tr>
+                            <td >
+                            <ul>
+                                <li class = 'nav-item'><img id ='spell1'></li>                                   
+                                <li class = 'nav-item'><img id ='spell2'></li>       
+                            </ul>
+                            </td>
+                            <td style="text-align:center" id = 'spellwr'></td>
+                            <td style="text-align:center" id = 'spellpr'></td>
+                            <td id = 'starter items'>
+                                <ul>
+                                    <li class = 'nav-item'><img id ='start1'></li>                                   
+                                    <li class = 'nav-item'><img id ='start2'></li>       
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'starter itemswr'></td>
+                            <td style="text-align:center" id = 'starter itemspr'></td>
+                            <td id = 'core items'>
+                                <ul>
+                                    <li class = 'nav-item'><img id ='corbuild1'></li>                                   
+                                    <li class = 'nav-item'><img id ='corbuild2'></li>
+                                    <li class = 'nav-item'><img id ='corbuild3'></li>         
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'corbldpr'></td>
+                            <td style="text-align:center" id = 'corbldwr'></td>
+                            <td style="text-align:center" id = 'srunes'>
+                                <ul>
+                                    <li class = 'nav-item'><img id ='keystone' style="width:50px;height:50px;"></li>                                   
+                                    <li class = 'nav-item'><img id ='prim1'style="width:50px;height:50px;"></li>
+                                    <li class = 'nav-item'><img id ='prim2' style="width:50px;height:50px;"></li>
+                                    <li class = 'nav-item'><img id ='prim3' style="width:50px;height:50px;"></li>           
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'prunes'>
+                                <ul>
+                                    <li class = 'nav-item'><img id ='sec1'style="width:50px;height:50px;"></li>                                   
+                                    <li class = 'nav-item'><img id ='sec2' style="width:50px;height:50px;"></li>                     
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'runepr'></td>
+                            <td style="text-align:center" id = 'runewr'></td>
+                          </tr>
+                    </table>  
+                    </div>
+                  
+                  </div>
                 
             </ul>
         </main>
         
         
     </div> 
+    
     <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
     <script type="module" src="{{ url_for('static', filename='champion.js') }}" ></script>
+    <script> function sortTable(col) {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("champlist");
+        switching = true;
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+          //start by saying: no switching is done:
+          switching = false;
+          rows = table.rows;
+          /*Loop through all table rows (except the
+          first, which contains table headers):*/
+          for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("td")[col];
+            
+            y = rows[i + 1].getElementsByTagName("td")[col];
+            //check if the two rows should switch place:
+            console.log(parseFloat(x.innerHTML))
+            if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+                
+              //if so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }</script>
+    
 </body>
 
 </html>

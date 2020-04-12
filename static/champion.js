@@ -1,6 +1,86 @@
 
-export default champion
 
-function champion(apikey){
-    window.location.pathname = `/champions`
+import myArr from './championdata.js'
+import champdata from './champlist.js'
+var listc =  ["Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Aphelios", "Ashe", "Aurelion Sol", "Azir", "Bard", "Blitzcrank", "Brand", "Braum", "Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki", "Darius", "Diana", "Dr. Mundo", "Draven", "Ekko", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", "Gangplank", "Garen", "Gnar", "Gragas", "Graves", "Hecarim", "Heimerdinger", "Illaoi", "Irelia", "Ivern", "Janna", "Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", "LeBlanc", "Lee Sin", "Leona", "Lissandra", "Lucian", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi", "Miss Fortune", "Mordekaiser", "Morgana", "Nami", "Nasus", "Nautilus", "Neeko", "Nidalee", "Nocturne", "Nunu & Willump", "Olaf", "Orianna", "Ornn", "Pantheon", "Poppy", "Pyke", "Qiyana", "Quinn", "Rakan", "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Senna", "Sett", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Sylas", "Syndra", "Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr", "Urgot", "Varus", "Vayne", "Veigar", "Vel'Koz", "Vi", "Viktor", "Vladimir", "Volibear", "Warwick", "Wukong", "Xayah", "Xerath", "Xin Zhao", "Yasuo", "Yorick", "Yuumi", "Zac", "Zed", "Ziggs", "Zilean", "Zoe", "Zyra"]   
+window.onload = showtable
+function showtable(){
+    let x = document.getElementById("champlist")
+    for (var champion of listc) {
+        var row = x.insertRow(-1)
+        var cell1 = row.insertCell(0)
+        var wr = row.insertCell(-1)
+        var pr = row.insertCell(-1)
+        cell1.innerHTML = champion
+        for (var champ  of champdata) {
+            
+            if (champ['champion'] == champion) {
+                
+                wr.innerHTML = champ['wr']
+                pr.innerHTML = champ['pr']
+                break;
+            }           
+        }
+        row.id = champion
+        row.className = 'champs'
+    }
+    for (var champion of listc) {
+        let champrow = document.getElementById(champion)
+        champrow.addEventListener('click', () => {
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                  modal.style.display = "none";
+                }
+            }
+            
+        });
+    }
+    var last = ''
+    document.querySelectorAll('.champs').forEach(item => {
+        item.addEventListener('click', () => {
+            var name = document.getElementById('champname')
+            
+            name.innerText = item.id
+            if (name.innerText == 'undefined'){
+                name.innerText = last
+            }
+            
+            last = name.innerText
+            for (item of myArr) {
+                if (item['champion'] == name.innerText) {
+                    document.getElementById('spell1').src = item['spell1']
+                    document.getElementById('spell2').src = item['spell2']
+                    document.getElementById('spellwr').innerText = item['spellwr']
+                    document.getElementById('spellpr').innerText = item['spellpr']
+                    document.getElementById('start1').src = item['strtitem1']
+                    document.getElementById('start2').src = item['strtitem2']
+                    document.getElementById('starter itemspr').innerText = item['strtpr']
+                    document.getElementById('starter itemswr').innerText = item['strtwr']
+                    document.getElementById('corbuild1').src = item['corbuild1']
+                    document.getElementById('corbuild2').src = item['corbuild2']
+                    document.getElementById('corbuild3').src = item['corbuild3']
+                    document.getElementById('corbldpr').innerText = item['corbldpr']
+                    document.getElementById('corbldwr').innerText = item['corbldwr']
+                    document.getElementById('keystone').src = item['keystone']
+                    document.getElementById('prim1').src = item['prim1']
+                    document.getElementById('prim2').src = item['prim2']
+                    document.getElementById('prim3').src = item['prim3']
+                    document.getElementById('sec1').src = item['sec1']
+                    document.getElementById('sec2').src = item['sec2']
+                    document.getElementById('runepr').innerText = item['runewr']
+                    document.getElementById('runewr').innerText = item['runepr']
+                
+                }
+            }
+        })          
+    })
+   
 }
+
+

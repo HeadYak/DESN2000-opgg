@@ -1,5 +1,5 @@
 //import summoner from './summoner.js'
-import champion from './champion.js'
+
 
 
 const apikey = 'RGAPI-098d1c31-f601-45f7-96f5-20887a7b5255'
@@ -10,7 +10,8 @@ const home = document.location.href
     document.location.href = `/summoner`
     });
   document.getElementById('championbtn').addEventListener('click', () => {
-    champion(apikey)  
+    document.location.href = `/champions`
+    
     });
   
   document.getElementById('homebtn').addEventListener('click', () => {

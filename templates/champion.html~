@@ -21,7 +21,6 @@
             body {
               background-image: url('https://www.mobafire.com/images/champion/skins/landscape/gragas-caskbreaker.jpg');
               background-repeat: no-repeat;
-              background-attachment: fixed;
               background-size: cover;
             }
             </style>

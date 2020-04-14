@@ -46,7 +46,7 @@ function showtable(){
         img.src = "http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/" + champion1 + ".png"
         img.height = 35;
         img.width = 35;
-        cell2.appendChild(img)
+        cell1.appendChild(img)
         // Putting in champion name 
         var text = document.createTextNode(champion)
         cell1.append(text)

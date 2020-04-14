@@ -211,7 +211,7 @@ div {
   border-width: 1px;
 }
 
-#champlist tr { 
+tr { 
   border: solid;
   border-width: 1px 0;
   border-color: #dddddd;

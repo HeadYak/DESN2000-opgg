@@ -84,10 +84,17 @@ footer {
   text-transform: uppercase;
   padding: 7.5px 15px;
   font-weight: bold;
+
 }
+
 
 .button-primary {
   color: var(--reddit-blue);
+  cursor: pointer;
+}
+
+.button-primary:hover{
+  text-decoration: underline;
 }
 .button-upvote {
   border: 1px solid var(--reddit-orange);

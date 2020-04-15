@@ -204,7 +204,6 @@ div {
   border-top: 1px
   height: 35px;
   width: 500px;
- 
 }
 
 #champlist th {
@@ -222,5 +221,9 @@ div {
   border: solid;
   border-width: 1px 0;
   border-color: #dddddd;
+}
+
+#champlist td:nth-child(-n + 2){
+  width: 100px
 }
 

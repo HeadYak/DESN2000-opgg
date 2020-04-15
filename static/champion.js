@@ -10,8 +10,8 @@ function showtable(){
     // Populating the WR, PR and champ name in each row
     for (var champion of listc) {
         var row = x.insertRow(-1)
-        var cell1 = row.insertCell(0)
-        var cell2 = row.insertCell(-1)
+        var cell2 = row.insertCell(0)
+        var cell1 = row.insertCell(-1)
         var wr = row.insertCell(-1)
         var pr = row.insertCell(-1)
         // Putting in champion portrait (the way the url works is a bit stupid so i have to wrok around it)

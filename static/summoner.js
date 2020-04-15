@@ -1,5 +1,6 @@
 
 export default summoner
+import summonerd from './sumdata.js'
 const apikey = 'RGAPI-098d1c31-f601-45f7-96f5-20887a7b5255'
 
 let summonerimg = document.createElement('img')
@@ -8,11 +9,11 @@ document.getElementById('searchbtn').addEventListener('click', () => {
       window.alert('Please enter summoner name')
     }
     else {
-      summoner(apikey, summonerimg)
+      summoner(apikey, summonerimg, summonerd)
     }
 });
-function summoner(apikey, summonerimg) {
-    
+function summoner(apikey, summonerimg, summonerd) {
+   
     let content = document.getElementById('content')
     
     var ranked = {
@@ -47,7 +48,7 @@ function summoner(apikey, summonerimg) {
             document.getElementById('WL').innerText = 'Wins: ' + league[0].wins + ' Losses: ' + league[0].losses 
  
         })
-        fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/${acctid}?endIndex=5&beginIndex=0&api_key=${apikey}`)
+        /*fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/${acctid}?endIndex=5&beginIndex=0&api_key=${apikey}`)
         .then(res => res.json())
         .then(matchhist => {
             for (const match of matchhist['matches']) {
@@ -71,6 +72,33 @@ function summoner(apikey, summonerimg) {
                     console.log(matchinfo)
                 })
             }
-        })
+        })*/
     })
+    console.log(summoner)
+    for (var record of summonerd) {
+        if (record['player'] == summoner) {
+            document.getElementById('champ1').src = record['champ1']
+            document.getElementById('cs1').innerText = record['cs1']
+            document.getElementById('kda1').innerText = record['kda1']
+            document.getElementById('wr1').innerText = record['wr1']
+            document.getElementById('pl1').innerText = record['pl1']
+
+            document.getElementById('champ2').src = record['champ2']
+            document.getElementById('cs2').innerText = record['cs2']
+            document.getElementById('kda2').innerText = record['kda2']
+            document.getElementById('wr2').innerText = record['wr2']
+            document.getElementById('pl2').innerText = record['pl2']
+
+            document.getElementById('champ3').src = record['champ3']
+            document.getElementById('cs3').innerText = record['cs3']
+            document.getElementById('kda3').innerText = record['kda3']
+            document.getElementById('wr3').innerText = record['wr3']
+            document.getElementById('pl3').innerText = record['pl3']
+            
+        }
+    }
+        
+        
+    
+   
 }

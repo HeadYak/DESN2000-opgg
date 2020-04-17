@@ -57,7 +57,7 @@ footer {
   border-radius: 50%;
 }
 
-#search {
+#search, #search1{
   background-color: var(--reddit-bg-color);
   font: inherit;
   font-size: var(--body-text-size);
@@ -222,5 +222,8 @@ div {
   border: solid;
   border-width: 1px 0;
   border-color: #dddddd;
+}
+#matchhist th, td {
+  padding: 5px;
 }
 

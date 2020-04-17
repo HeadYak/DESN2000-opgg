@@ -195,6 +195,7 @@ div {
   padding-left: 50px;
 }
 
+/* Champlist Table CSS */
 #champlist table {
   border-collapse: collapse;
 }
@@ -225,5 +226,35 @@ div {
 
 #champlist td:nth-child(-n + 2){
   width: 100px
+}
+
+/* Playerlist Table CSS */
+
+#playerlist table {
+  border-collapse: collapse;
+}
+
+#playerlist td {
+  padding: 10px 0px;
+  border-top: 1px;
+  height: 35px;
+  width: 500px;
+}
+
+#playerlist th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff5700;
+  color: white;
+  border: solid;
+  border-color: #ffffff;
+  border-width: 1px;
+}
+
+#playerlist tr { 
+  border: solid;
+  border-width: 1px 0;
+  border-color: #dddddd;
 }
 

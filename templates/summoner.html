@@ -51,11 +51,12 @@
                 </div>
                 <li class="nav-item">
                     <input id="search" data-id-search placeholder="Search Summoner" type="search" />
+                    <input id="search1" data-id-search placeholder="Search Summoner" type="search" />
                 </li>
                 <li class='nav-item'>
                     <button id='searchbtn' data-id-login class="button button-primary">Search</button>
                 </li>
-                <li  class="post" data-id-post>
+                <li  class="post" data-id-post >
                     
                     <div id = 'content' class="content">
                         <h4 id='summonername' data-id-title ></h4>
@@ -65,13 +66,13 @@
                         <p id = "WL">  </p>
                         
                     </div>
-                    <div ><table style="width:100%" id ='matchhist'>
+                    <div style="display:none" id ='recentg'><table style="width:100%" id ='matchhist' >
                             <tr>
-                                <th>Champion</th>
-                                <th >CS</th>
-                                <th>KDA</th>
-                                <th>WR</th>
-                                <th>Games Played</th>
+                                <th style="text-align:center">Champion</th>
+                                <th style="text-align:center" >CS</th>
+                                <th style="text-align:center">KDA</th>
+                                <th style="text-align:center">WR</th>
+                                <th style="text-align:center">Games Played</th>
                             </tr>
                             <tr>
                                 <td >
@@ -109,11 +110,81 @@
                                 <td style="text-align:center" id = 'pl3'></td>
                                     
                             </tr>
+                            <tr>
+                                <th>Recent Games</th>
+                            </tr> 
+                            <tr>
+                                <td colspan = "5"  id = 'recent'></td>
+                            </tr>
                             
                           
                             </table>   </div>
                     
                 </li>
+                <li class="post" data-id-post > 
+                    <div id = 'content1' class="content">
+                        <h4 id='summonername1' data-id-title ></h4>
+                        <p id = "queue1">  </p>
+                        <p id = "rank1">  </p>
+                        
+                        <p id = "WL1">  </p>
+                        
+                    </div>
+                    <div style="display:none" id ='recentg1'><table style="width:100%" id ='matchhist1' >
+                        <tr>
+                            <th style="text-align:center">Champion</th>
+                            <th style="text-align:center" >CS</th>
+                            <th style="text-align:center">KDA</th>
+                            <th style="text-align:center">WR</th>
+                            <th style="text-align:center">Games Played</th>
+                        </tr>
+                        <tr>
+                            <td >
+                                <ul>
+                                    <li class = 'nav-item'><img id ='champ11'></li>                                                                               
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'cs11'></td>
+                            <td style="text-align:center" id = 'kda11'></td>
+                            <td style="text-align:center" id = 'wr11'></td>
+                            <td style="text-align:center" id = 'pl11'></td>
+                                
+                        </tr>
+                        <tr>
+                            <td >
+                                <ul>
+                                    <li class = 'nav-item'><img id ='champ21'></li>                                                                               
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'cs21'></td>
+                            <td style="text-align:center" id = 'kda21'></td>
+                            <td style="text-align:center" id = 'wr21'></td>
+                            <td style="text-align:center" id = 'pl21'></td>
+                                
+                        </tr>
+                        <tr>
+                            <td >
+                                <ul>
+                                    <li class = 'nav-item'><img id ='champ31'></li>                                                                               
+                                </ul>
+                            </td>
+                            <td style="text-align:center" id = 'cs31'></td>
+                            <td style="text-align:center" id = 'kda31'></td>
+                            <td style="text-align:center" id = 'wr31'></td>
+                            <td style="text-align:center" id = 'pl31'></td>
+                                
+                        </tr>
+                        <tr>
+                            <th>Recent Games</th>
+                        </tr> 
+                        <tr>
+                            <td colspan = "5"  id = 'recent1'></td>
+                        </tr>
+                        
+                      
+                        </table>   </div>
+                </li>
+
                 
             </ul>
         </main>

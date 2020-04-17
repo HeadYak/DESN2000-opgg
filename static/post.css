@@ -5,6 +5,7 @@
   margin: 20px 0;
   background-color: white;
   border: 1px solid var(--reddit-grey);
+  width: 100%;
 }
 
 .post .vote {

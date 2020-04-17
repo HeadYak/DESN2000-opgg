@@ -15,33 +15,7 @@ function showtable(){
         var wr = row.insertCell(-1)
         var pr = row.insertCell(-1)
         // Putting in champion portrait (the way the url works is a bit stupid so i have to wrok around it)
-        var champion1 = champion
-        // Special cases (MonkeyKing, KogMaw, RekSai, Leblanc, Nunu)
-        if(champion == "Wukong") {
-            champion1 = "MonkeyKing"
-        }
-        if(champion == "Kog'Maw") {
-            champion1 = "KogMaw"
-        }
-        if(champion == "Rek'Sai") {
-            champion1 = "RekSai"
-        }
-        if(champion == "LeBlanc") {
-            champion1 = "Leblanc"
-        }
-        if(champion == "Nunu & Willump") {
-            champion1 = "Nunu"
-        }
-        // if the champion name has a "'" in it (ie for void champions)
-        if(champion1.indexOf('\'') >= 0) {
-            champion1 = champion1.replace("\'", '')
-            champion1 = champion1.charAt(0).toUpperCase() + champion1.slice(1).toLowerCase();
-        }
-        // If champion has a space in it (theres a dumb case for drmundo)
-        if(champion1.indexOf(' ') >= 0) {
-            champion1 = champion1.replace(" ", '')
-            champion1 = champion1.replace(".", '')
-        }
+        var champion1 = championImg(champion)
         var img = document.createElement('img')
         img.src = "http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/" + champion1 + ".png"
         img.height = 35;
@@ -86,13 +60,18 @@ function showtable(){
     document.querySelectorAll('.champs').forEach(item => {
         item.addEventListener('click', () => {
             var name = document.getElementById('champname')
-            
             name.innerText = item.id
             if (name.innerText == 'undefined'){
                 name.innerText = last
             }
-            
             last = name.innerText
+            // *
+            var champimage = document.getElementById('champimg')
+            var champion1 = championImg(item.id)
+            champimage.src = "http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/" + champion1 + ".png"
+            champimage.height = 100
+            champimage.width = 100
+            //
             for (item of myArr) {
                 if (item['champion'] == name.innerText) {
                     document.getElementById('spell1').src = item['spell1']
@@ -124,4 +103,33 @@ function showtable(){
    
 }
 
+function championImg(champion) {
+    // Special cases (MonkeyKing, KogMaw, RekSai, Leblanc, Nunu)
+    if(champion == "Wukong") {
+        champion = "MonkeyKing"
+    }
+    if(champion == "Kog'Maw") {
+        champion = "KogMaw"
+    }
+    if(champion == "Rek'Sai") {
+        champion = "RekSai"
+    }
+    if(champion == "LeBlanc") {
+        champion = "Leblanc"
+    }
+    if(champion == "Nunu & Willump") {
+        champion = "Nunu"
+    }
+    // if the champion name has a "'" in it (ie for void champions)
+    if(champion.indexOf('\'') >= 0) {
+        champion = champion.replace("\'", '')
+        champion = champion.charAt(0).toUpperCase() + champion.slice(1).toLowerCase();
+    }
+    // If champion has a space in it (theres a dumb case for drmundo)
+    if(champion.indexOf(' ') >= 0) {
+        champion = champion.replace(" ", '')
+        champion = champion.replace(".", '')
+    }
+    return champion
+}
 

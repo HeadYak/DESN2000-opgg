@@ -218,6 +218,11 @@ div {
   border-width: 1px;
 }
 
+#champlist th:hover {
+  text-decoration:underline;  
+  cursor: pointer;
+}
+
 #champlist tr { 
   border: solid;
   border-width: 1px 0;
@@ -226,6 +231,11 @@ div {
 
 #champlist td:nth-child(-n + 2){
   width: 100px
+}
+
+#champlist tr:hover {
+  cursor: pointer;
+  text-decoration:underline;  
 }
 
 /* Playerlist Table CSS */

@@ -235,7 +235,7 @@ div {
 
 #champlist tr:hover {
   cursor: pointer;
-  text-decoration:underline;  
+  background-color: #ddd;
 }
 
 /* Playerlist Table CSS */
@@ -268,3 +268,62 @@ div {
   border-color: #dddddd;
 }
 
+/* Modal Table CSS */ 
+
+#champinfo table {
+  border-collapse: collapse;
+}
+
+#champinfo td {
+  padding: 10px 0px;
+  border-top: 1px;
+  height: 35px;
+  width: 500px;
+}
+
+#champinfo th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff5700;
+  color: white;
+  border: solid;
+  border-color: #ffffff;
+  border-width: 1px;
+}
+
+#champinfo tr { 
+  border: solid;
+  border-width: 1px 0;
+  border-color: #dddddd;
+}
+
+#srunes li {
+   display:block;
+   float:left;
+   width:300px; // adjust
+   height:150px; // adjust
+   padding: 5px; //adjust
+}
+
+#prunes li {
+   display:block;
+   float:left;
+   width:300px; // adjust
+   height:150px; // adjust
+   padding: 5px; //adjust
+}
+
+#srunes td  {
+    width: 250px;
+}
+
+#prunes td {
+    width: 250px;
+}
+
+#champinfo tr:first-child th{
+    color: black;
+    background-color: #ffffff;
+    width:200px
+}

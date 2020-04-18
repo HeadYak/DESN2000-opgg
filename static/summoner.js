@@ -101,7 +101,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
         })
         document.getElementById('search1').value = ''
         for (var record of summonerd) {
-            if (record['player'] == summoner1) {
+            if (record['player'].toLowerCase() == summoner1.toLowerCase()) {
                 document.getElementById('champ11').src = record['champ1']
                 document.getElementById('cs11').innerText = record['cs1']
                 document.getElementById('kda11').innerText = record['kda1']
@@ -130,7 +130,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
     
     console.log(summoner)
     for (var record of summonerd) {
-        if (record['player'] == summoner) {
+        if (record['player'].toLowerCase() == summoner.toLowerCase()) {
             document.getElementById('champ1').src = record['champ1']
             document.getElementById('cs1').innerText = record['cs1']
             document.getElementById('kda1').innerText = record['kda1']

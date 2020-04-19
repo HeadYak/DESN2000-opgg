@@ -67,7 +67,7 @@ function showtable(){
             last = name.innerText
             // *
             var champimage = document.getElementById('champimg')
-            var champion1 = championImg(item.id)
+            var champion1 = championImg(name.innerText)
             champimage.src = "http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/" + champion1 + ".png"
             champimage.height = 100
             champimage.width = 100

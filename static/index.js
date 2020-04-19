@@ -17,6 +17,11 @@ document.getElementById('leaderbtn').addEventListener('click', () => {
   document.location.href = `/leaderboard`
   
   });
+document.getElementById('livebtn').addEventListener('click', () => {
+  document.location.href = `/livegame`
+  
+  });
+  
   
 
 document.getElementById('homebtn').addEventListener('click', () => {

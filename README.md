@@ -1,4 +1,4 @@
-# Op.GG
+# Blitz.Plus
 
 In our project, we are creating a website that allows players of our favorite game "League of Legends" to have access to important information
 that they would otherwise be unable to access which allows them to improve their gameplay.

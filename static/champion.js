@@ -65,13 +65,13 @@ function showtable(){
                 name.innerText = last
             }
             last = name.innerText
-            // *
+            
             var champimage = document.getElementById('champimg')
             var champion1 = championImg(item.id)
             champimage.src = "http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/" + champion1 + ".png"
             champimage.height = 100
             champimage.width = 100
-            //
+
             for (item of myArr) {
                 if (item['champion'] == name.innerText) {
                     document.getElementById('spell1').src = item['spell1']
@@ -132,4 +132,6 @@ function championImg(champion) {
     }
     return champion
 }
+
+
 

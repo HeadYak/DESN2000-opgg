@@ -21,7 +21,6 @@
             body {
               background-image: url('https://www.mobafire.com/images/champion/skins/landscape/gragas-caskbreaker.jpg');
               background-repeat: no-repeat;
-              background-attachment: fixed;
               background-size: cover;
             }
             </style>
@@ -49,28 +48,31 @@
         <main role='main'>
             <ul id="feed" data-id-feed>
                 <div class="feed-header">
-                    <h3 class="feed-title alt-text">Leaderboards</h3>
+                    <h3 class="feed-title alt-text">Live Game</h3>
                     
                 </div>
+                <li class="nav-item">
+                    <input id="search" data-id-search placeholder="Search Summoner" type="search" />
+                    
+                </li>
+                <li class='nav-item'>  
+                     <button id='searchbtn' data-id-login class="button button-primary">Search</button> 
+                </li>
                 
-                <li  class="post" data-id-post>
-                    
+                <li  class="post" data-id-post>                  
                     <div id = 'content' class="content">
-                        <table id = 'playerlist' style="width:100%" >
-                            <tr>
-                                <th onclick="sortTable(0)"></th>
-                                <th>Summoner</th>
-                                <th>Rank</th>
-                                <th onclick="sortTable(3)">LP</th>
-                                <th onclick="sortTable(4)">Wins</th>
-                                <th onclick="sortTable(5)">Losses</th>
-                                <th onclick="sortTable(6)">Winrate</th>
-                              </tr>
-                        </table>   
-                       
+                        <table id = 'game' style="width:100%" >
+                         <tr>
+                             <td id = 'meta'> </td>
+                             
+                         </tr>
+                         <tr> 
+                            <td id ='time'></td>
+                         </tr>       
+                        </table>  
+                      
                         
-                    </div>
-                    
+                    </div>    
                 </li>
                 
             </ul>
@@ -78,45 +80,8 @@
         
         
     </div> 
-    <script type="module" src="{{ url_for('static', filename='leaderboard.js') }}" ></script>
     <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
-    <script> function sortTable(col) {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("playerlist");
-        switching = true;
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-          //start by saying: no switching is done:
-          switching = false;
-          rows = table.rows;
-          /*Loop through all table rows (except the
-          first, which contains table headers):*/
-          for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("td")[col];
-            
-            y = rows[i + 1].getElementsByTagName("td")[col];
-            //check if the two rows should switch place:
-            
-            if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
-                
-              //if so, mark as a switch and break the loop:
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-          }
-        }
-      }</script>
+    <script type="module" src="{{ url_for('static', filename='livegame.js') }}" ></script>
 </body>
 
 </html>

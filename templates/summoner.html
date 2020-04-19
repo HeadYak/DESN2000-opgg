@@ -26,8 +26,8 @@
             }
             </style>
         <header class='banner' id="nav">
-            <h1 id="logo" class="flex-center">BlitzPlus</h1>
-            <ul id='navbar" class='nav'>
+            <img src ='https://see.fontimg.com/api/renderfont4/owxMq/eyJyIjoiZnMiLCJoIjo2NiwidyI6MTAwMCwiZnMiOjY2LCJmZ2MiOiIjRTk3NDBDIiwiYmdjIjoiI0ZGRkZGRiJ9/QmxpdHogUGx1cw/lemon-milk-light.png' >
+            <ul id='navbar' class='nav'>
                 <li class='nav-item'>
                     <button id='homebtn' data-id-login class="button button-primary">Home</button>
                 </li>
@@ -40,6 +40,9 @@
                 <li class='nav-item'>
                     <button id='leaderbtn' data-id-login class="button button-primary">Leaderboards</button>
                 </li>
+                <li class='nav-item'>
+                    <button id='livebtn' data-id-login class="button button-primary">Live Game</button>
+                </li>
                
             </ul>
         </header>
@@ -49,14 +52,15 @@
                     <h3 class="feed-title alt-text">Summoner Page</h3>
                     
                 </div>
+                
                 <li class="nav-item">
                     <input id="search" data-id-search placeholder="Search Summoner" type="search" />
-                    <input id="search1" data-id-search placeholder="Search Summoner" type="search" />
+                    
                 </li>
                 <li class='nav-item'>
                     <button id='searchbtn' data-id-login class="button button-primary">Search</button>
                 </li>
-                <li  class="post" data-id-post >
+                <li id = 'sum1' style="display:none" class="post" data-id-post >
                     
                     <div id = 'content' class="content">
                         <h2 id='summonername' data-id-title ></h2>
@@ -118,11 +122,16 @@
                                 <td colspan = "5"  id = 'recent'></td>
                             </tr>
                             
-                          
-                            </table>   </div>
+                            </table>
+                            <table style="width:100%" id ='pastranks'> 
+                                <tr>
+                                    <th>Past Ranks</th>
+                                </tr>
+                            </table>
+                            </div>
                     
                 </li>
-                <li class="post" data-id-post > 
+                <li id = 'sum2' style="display:none" class="post" data-id-post > 
                     <div id = 'content1' class="content">
                         <h3 id='summonername1' data-id-title ></h3>
                         <p id = "level1"> </p>
@@ -184,6 +193,11 @@
                         </tr>
                         
                       
+                        </table>
+                        <table style="width:100%" id ='pastranks1'> 
+                            <tr>
+                                <th>Past Ranks</th>
+                            </tr>
                         </table>   </div>
                 </li>
 

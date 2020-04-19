@@ -15,6 +15,9 @@ def summoner():
 @app.route('/leaderboard')
 def leaderboard():
     return render_template('leaderboard.html')
+@app.route('/livegame')
+def livegame():
+    return render_template('livegame.html')
 
 
 if __name__ == '__main__':

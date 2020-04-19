@@ -132,12 +132,13 @@ footer > * {
   max-width: 800px;
   width: 80%;
   margin: 20px auto;
-  padding: 0;
+  padding: 5px;
 }
 
 .feed-header {
   display: flex;
   justify-content: space-between;
+  margin: 20px;
 }
 
 .feed-title {
@@ -304,17 +305,16 @@ div {
 #srunes li {
    display:block;
    float:left;
-   width:300px; // adjust
-   height:150px; // adjust
-   padding: 5px; //adjust
+   width:300px; 
+   height:150px; 
+   padding: 5px; 
 }
-
 #prunes li {
    display:block;
    float:left;
-   width:300px; // adjust
-   height:150px; // adjust
-   padding: 5px; //adjust
+   width:300px; 
+   height:150px; 
+   padding: 5px; 
 }
 
 #srunes td  {

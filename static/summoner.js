@@ -1,6 +1,7 @@
 
 export default summoner
 import summonerd from './sumdata.js'
+import ranks from './rank.js'
 const apikey = 'RGAPI-098d1c31-f601-45f7-96f5-20887a7b5255'
 
 let summonerimg = document.createElement('img')
@@ -124,13 +125,36 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
     
                 document.getElementById('recent1').innerText = 'W' + record['win'] + ' ' + 'L' + record['lose'] + '      ' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
                 document.getElementById('recentg1').style.display = 'block'
+                document.getElementById('sum2').style.display = 'flex'
             }
         }
-        
-        
+        var i = 0
+        let x = document.getElementById("pastranks1")
+        for(var z = x.rows.length - 1; z > 0; z--) {
+            x.deleteRow(z);
+        }
+
+        for (var player of ranks) {
+            
+            if (player['player'] == summoner1) {
+                for (var season of player['seasons']){
+                    var row = x.insertRow(-1)
+                    var cell1 = row.insertCell(-1)
+                    cell1.innerText = season
+                    var cell2 = row.insertCell(-1)
+                    if (season == 'S3') {
+                        cell2.innerText = player['league'][0]
+                    }else {
+                        cell2.innerText = player['ranks'][i]
+                        i++ 
+                    }
+                }
+                
+            }
+        }       
     }
     
-    console.log(summoner)
+    
     for (var record of summonerd) {
         if (record['player'].toLowerCase() == summoner.toLowerCase()) {
             document.getElementById('champ1').src = record['champ1']
@@ -153,6 +177,31 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
 
             document.getElementById('recent').innerText = 'W' + record['win'] + ' ' + 'L' + record['lose'] + '      ' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
             document.getElementById('recentg').style.display = 'block'
+            document.getElementById('sum1').style.display = 'flex'
+        }
+    }
+    i = 0
+    let t = document.getElementById("pastranks")
+    for(var z = t.rows.length - 1; z > 0; z--) {
+        t.deleteRow(z);
+    }
+
+    for (var player of ranks) {
+        
+        if (player['player'] == summoner) {
+            for (var season of player['seasons']){
+                var row = t.insertRow(-1)
+                var cell1 = row.insertCell(-1)
+                cell1.innerText = season
+                var cell2 = row.insertCell(-1)
+                if (season == 'S3') {
+                    cell2.innerText = player['league'][0]
+                }else {
+                    cell2.innerText = player['ranks'][i]
+                    i++ 
+                }
+            }
+            
         }
     }
     

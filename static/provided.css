@@ -325,8 +325,36 @@ div {
     width: 250px;
 }
 
-#champinfo tr:first-child th{
-    color: black;
-    background-color: #ffffff;
-    width:200px
+#modaltitle {
+ 
+  padding-right: 0px;
+  
+  padding-left: 0px;
+}
+
+/* The following os for the summoner page */
+
+.content p {
+  color: #808080;
+  font-size: 12px;
+  margin-bottom: -3px;
+  margin-top: -3px;
+}
+
+.content h2 {
+  color: #000000;
+  font-size: 22px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.content h3 {
+  color: #4dd2ff;
+  font-size: 16px;
+}
+
+.content {
+  border-right: solid;
+  border-width: 2px;
+  border-color: #808080;
 }

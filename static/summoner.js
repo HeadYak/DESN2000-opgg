@@ -31,8 +31,9 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
     .then(res => (res.json()))
     .then(data => {
         let summonername = document.getElementById('summonername')
-        summonername.innerText = data.name + ' ' + 'Level: ' + data.summonerLevel
-        content.insertBefore(summonerimg, content.children[1])
+        summonername.innerText = data.name
+        document.getElementById('level').innerText = 'Level: ' + data.summonerLevel
+        content.insertBefore(summonerimg, content.children[2])
         
         
         summonerimg.src = `https://opgg-static.akamaized.net/images/profile_icons/profileIcon${data.profileIconId}.jpg?image=q_auto&v=1518361200`
@@ -82,7 +83,8 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
         .then(res => (res.json()))
         .then(data => {
             let summonername = document.getElementById('summonername1')
-            summonername.innerText = data.name + ' ' + 'Level: ' + data.summonerLevel
+            summonername.innerText = data.name
+            document.getElementById('level1').innerText = 'Level: ' + data.summonerLevel
             content1.insertBefore(summonerimg1, content1.children[1])
             summonerimg1.src = `https://opgg-static.akamaized.net/images/profile_icons/profileIcon${data.profileIconId}.jpg?image=q_auto&v=1518361200`
             summonerimg1.width = 150

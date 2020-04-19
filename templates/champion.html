@@ -60,7 +60,7 @@
                     <div id = 'content' class="content">
                     <table id = 'champlist' style="width:100%">
                         <tr>
-                            <th colspan = "2">Champion</th>
+                            <th colspan = "2"><p>Champion </th>
                             <th onclick="sortTable(2)">Winrate</th>
                             <th onclick="sortTable(3)">Pickrate</th>
                           </tr>
@@ -74,9 +74,13 @@
                     <!-- Modal content -->
                     <div class="modal-content">
                       <span class="close">&times;</span>
-                      
+                      <div id = 'modaltitle' style="display:inline-block;vertical-align:top;">
+                        <img id = 'champimg'>
+                      </div>
+                      <div id = 'modaltitle' style="display:inline-block;">
+                          <h1 id = 'champname'></h1>
+                      </div>
                       <table id = 'champinfo' style="width:100%" >
-                        <tr><th id = 'champname'> </th><td id = 'champimage'><img id = 'champimg'></tr>
                         <tr>
                             <th>Summoner Spells</th>
                             <th>Winrate</th>
@@ -164,6 +168,7 @@
     
     <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
     <script type="module" src="{{ url_for('static', filename='champion.js') }}" ></script>
+    
     <script> function sortTable(col) {
         var table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("champlist");

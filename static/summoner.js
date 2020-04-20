@@ -34,9 +34,9 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
         let summonername = document.getElementById('summonername')
         summonername.innerText = data.name
         document.getElementById('level').innerText = 'Level: ' + data.summonerLevel
-        content.insertBefore(summonerimg, content.children[2])
+        //content.insertBefore(summonerimg, content.children[2])
         
-        
+        summonerimg = document.getElementById('sumimg')
         summonerimg.src = `https://opgg-static.akamaized.net/images/profile_icons/profileIcon${data.profileIconId}.jpg?image=q_auto&v=1518361200`
         summonerimg.width = 150
         summonerimg.length = 150
@@ -47,9 +47,17 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             //console.log(league)
             let queue = document.getElementById('queue')
             queue.innerText = ranked[league[0].queueType] 
-            document.getElementById('rank').innerText =  league[0].tier + ' ' + league[0].rank + ' ' + league[0].leaguePoints + ' LP'
-            document.getElementById('WL').innerText = 'Wins: ' + league[0].wins + ' Losses: ' + league[0].losses 
- 
+            
+            let rankimage = document.getElementById('rankimg')
+            rankimage.src = 'https://opgg-static.akamaized.net/images/medals/' + league[0].tier.toLowerCase() + '_1.png?image=q_auto&v=1'
+            rankimage.height = 100
+            rankimage.width = 100
+            
+            document.getElementById('rank').innerText =  league[0].tier + ' ' + league[0].rank
+            document.getElementById('LPWL').innerText = league[0].leaguePoints + ' LP' + ' / ' + league[0].wins + 'W ' + league[0].losses + 'L'
+            let floatie = parseFloat(league[0].wins)/parseFloat(league[0].wins + league[0].losses)*100
+            let winrate = floatie.toFixed(1)
+            document.getElementById('WR').innerText = "Win Ratio " + winrate + "%"
         })
         /*fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/${acctid}?endIndex=5&beginIndex=0&api_key=${apikey}`)
         .then(res => res.json())
@@ -87,6 +95,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             summonername.innerText = data.name
             document.getElementById('level1').innerText = 'Level: ' + data.summonerLevel
             content1.insertBefore(summonerimg1, content1.children[1])
+            summonerimg1 = document.getElementById('sumimg1')
             summonerimg1.src = `https://opgg-static.akamaized.net/images/profile_icons/profileIcon${data.profileIconId}.jpg?image=q_auto&v=1518361200`
             summonerimg1.width = 150
             summonerimg1.length = 150
@@ -95,11 +104,18 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             .then(res => (res.json()))
             .then(league => {
                 //console.log(league)
-                let queue = document.getElementById('queue1')
+                let queue = document.getElementById('queue1')               
+                queue.innerText = ranked[league[0].queuetype]
+                let rankimage = document.getElementById('rankimg1')
+                rankimage.src = 'https://opgg-static.akamaized.net/images/medals/' + league[0].tier.toLowerCase() + '_1.png?image=q_auto&v=1'
+                rankimage.height = 100
+                rankimage.width = 100
                 queue.innerText = ranked[league[0].queueType] 
-                document.getElementById('rank1').innerText =  league[0].tier + ' ' + league[0].rank + ' ' + league[0].leaguePoints + ' LP'
-                document.getElementById('WL1').innerText = 'Wins: ' + league[0].wins + ' Losses: ' + league[0].losses 
-    
+                document.getElementById('rank1').innerText =  league[0].tier + ' ' + league[0].rank
+                document.getElementById('LPWL1').innerText = league[0].leaguePoints + ' LP' + ' / ' + league[0].wins + 'W ' + league[0].losses + 'L'
+                let floatie = parseFloat(league[0].wins)/parseFloat(league[0].wins + league[0].losses)*100
+                let winrate = floatie.toFixed(1)
+                document.getElementById('WR1').innerText = "Win Ratio " + winrate + "%"
             })
         })
         document.getElementById('search1').value = ''

@@ -332,29 +332,65 @@ div {
   padding-left: 0px;
 }
 
-/* The following os for the summoner page */
+/* The following is for the summoner page */
 
-.content p {
+.sumcontent {
+  border-right: solid;
+  border-width: 2px;
+  border-color: #808080;
+  padding: 10px;
+  width: 380px;
+}
+
+.sumcontent p {
   color: #808080;
   font-size: 12px;
   margin-bottom: -3px;
   margin-top: -3px;
 }
 
-.content h2 {
+.sumcontent h2 {
   color: #000000;
   font-size: 22px;
   margin-top: -5px;
   margin-bottom: -5px;
 }
 
-.content h3 {
+.sumcontent h3 {
   color: #4dd2ff;
   font-size: 16px;
+  margin-top: -3px;
+  margin-bottom: 5px;
 }
 
-.content {
-  border-right: solid;
-  border-width: 2px;
-  border-color: #808080;
+.sumcontent h4 {
+  color: #808080;
+  font-size: 12px;
+  margin-top: -3px;
+  margin-bottom: -3px
 }
+
+div.sumprofile {
+  padding-left: 10px;
+  padding-right: 0px;
+  padding-bottom: 70px;
+  padding-top: 20px;
+}
+
+div.sumstats {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 20px;
+  padding-top: 80px;
+}
+
+#sumimg {
+  padding-right: 8px;
+}
+
+#sumimg1 {
+  padding-right: 8px;
+}
+
+
+

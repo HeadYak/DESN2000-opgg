@@ -139,7 +139,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                 document.getElementById('wr31').innerText = record['wr3']
                 document.getElementById('pl31').innerText = record['pl3']
     
-                document.getElementById('recent1').innerText = 'W' + record['win'] + ' ' + 'L' + record['lose'] + '      ' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
+                document.getElementById('recent1').innerText = record['win'] +'W ' + record['lose'] + 'L' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
                 document.getElementById('recentg1').style.display = 'block'
                 document.getElementById('sum2').style.display = 'flex'
             }
@@ -152,7 +152,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
 
         for (var player of ranks) {
             
-            if (player['player'] == summoner1) {
+            if (player['player'].toLowerCase() == summoner1.toLowerCase()) {
                 for (var season of player['seasons']){
                     var row = x.insertRow(-1)
                     var cell1 = row.insertCell(-1)
@@ -191,7 +191,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             document.getElementById('wr3').innerText = record['wr3']
             document.getElementById('pl3').innerText = record['pl3']
 
-            document.getElementById('recent').innerText = 'W' + record['win'] + ' ' + 'L' + record['lose'] + '      ' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
+            document.getElementById('recent').innerText = record['win'] +'W ' + record['lose'] + 'L' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
             document.getElementById('recentg').style.display = 'block'
             document.getElementById('sum1').style.display = 'flex'
         }
@@ -204,7 +204,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
 
     for (var player of ranks) {
         
-        if (player['player'] == summoner) {
+        if (player['player'].toLowerCase() == summoner.toLowerCase()) {
             for (var season of player['seasons']){
                 var row = t.insertRow(-1)
                 var cell1 = row.insertCell(-1)

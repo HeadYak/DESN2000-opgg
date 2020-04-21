@@ -203,7 +203,7 @@ div {
 
 #champlist td {
   padding: 10px 0px;
-  border-top: 1px;
+  border-bottom: 1px solid #ddd;
   height: 35px;
   width: 500px;
 }
@@ -392,5 +392,47 @@ div.sumstats {
   padding-right: 8px;
 }
 
+/* Summoner page information */
 
+.champstats {
+  border-collapse: collapse;
+}
 
+.champstats td {
+  padding: 10px 0px;
+  border-top: 1px;
+  height: 20px;
+  width: 100px;
+}
+
+.champstats th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff5700;
+  color: white;
+  border: solid;
+  border-color: #ffffff;
+  border-width: 1px;
+}
+
+.champstats th, td {
+  padding: 5px;
+  border-bottom: 1px  solid #ddd;
+}
+
+.champstats td:nth-child(1){
+  border-right: 1px solid #ddd;
+}
+
+#recentg {
+  padding: 10px;
+}
+
+#recentg1 {
+  padding: 10px;
+}
+
+#recgames td{
+  width: 500px;
+}

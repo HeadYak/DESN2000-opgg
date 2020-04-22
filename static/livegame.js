@@ -78,7 +78,7 @@ document.getElementById('searchbtn').addEventListener('click', () => {
                     srune.height = 30
                     srune.width = 30
                     rune2.appendChild(srune)
-                    
+                    //console.log(player['summonerId'])
                     fetch(`https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/${player['summonerId']}?api_key=${apikey}`)
                     .then(res => (res.json()))
                     .then(league => {

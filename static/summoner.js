@@ -31,6 +31,12 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
     fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=${apikey}`, options)
     .then(res => (res.json()))
     .then(data => {
+        console.log(data)
+        if (data.status != null){
+            window.alert('Invalid Summoner Name')
+            return
+        }
+        
         let summonername = document.getElementById('summonername')
         summonername.innerText = data.name
         document.getElementById('level').innerText = 'Level: ' + data.summonerLevel
@@ -84,6 +90,87 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                 })
             }
         })*/
+        for (var record of summonerd) {
+            if (record['player'].toLowerCase() == summoner.toLowerCase()) {
+                document.getElementById('champ1').src = record['champ1']
+                document.getElementById('cs1').innerText = record['cs1']
+                document.getElementById('kda1').innerText = record['kda1']
+                document.getElementById('wr1').innerText = record['wr1']
+                document.getElementById('pl1').innerText = record['pl1']
+    
+                document.getElementById('champ2').src = record['champ2']
+                document.getElementById('cs2').innerText = record['cs2']
+                document.getElementById('kda2').innerText = record['kda2']
+                document.getElementById('wr2').innerText = record['wr2']
+                document.getElementById('pl2').innerText = record['pl2']
+    
+                document.getElementById('champ3').src = record['champ3']
+                document.getElementById('cs3').innerText = record['cs3']
+                document.getElementById('kda3').innerText = record['kda3']
+                document.getElementById('wr3').innerText = record['wr3']
+                document.getElementById('pl3').innerText = record['pl3']
+    
+                document.getElementById('WL').innerText = '10G ' + record['win'] +'W ' + record['lose'] + 'L' 
+                document.getElementById('KDA').innerText = record['kdar'] + ' KDA'
+                document.getElementById('KP').innerText = record['kp'] + 'KP'
+                document.getElementById('recentg').style.display = 'block'
+                document.getElementById('sum1').style.display = 'flex'
+            }
+        }
+
+    // Constructing a wee pie graph
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Create the data table.
+    function drawChart() {
+        for (var record of summonerd) {
+            if (record['player'].toLowerCase() == summoner.toLowerCase()) {
+                var data = google.visualization.arrayToDataTable([
+                ['Games', 'Results'],
+                ['Wins', parseInt(record['win'])],
+                ['Losses', parseInt(record['lose'])]
+            ]);
+        }
+        var chartoptions = {width:100,
+            height:100,
+            legend: 'none',
+            chartArea: {'width': '100%', 'height': '100%'},
+            pieHole: 0.6,           
+            pieSliceText: "none",
+            tooltipWidth:100,
+            tooltipHeight:100,
+            tooltipFontSize:12
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, chartoptions);               
+        }
+    }
+        i = 0
+        let t = document.getElementById("pastranks")
+        for(var z = t.rows.length - 1; z > 0; z--) {
+            t.deleteRow(z);
+        }
+        console.log(summoner.toLowerCase())
+        for (var player of ranks) {
+            
+            if (player['player'] == summoner) {
+                for (var season of player['seasons']){
+                    var row = t.insertRow(-1)
+                    var cell1 = row.insertCell(-1)
+                    cell1.innerText = season
+                    var cell2 = row.insertCell(-1)
+                    if (season == 'S3') {
+                        cell2.innerText = player['league'][0]
+                    }else {
+                        cell2.innerText = player['ranks'][i]
+                        i++ 
+                    }
+                }
+                
+            }
+        }
     })
     if ( document.getElementById('search1').value != '') {
         const summoner1 = document.getElementById('search1').value 
@@ -91,6 +178,10 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
         fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner1}?api_key=${apikey}`, options)
         .then(res => (res.json()))
         .then(data => {
+            if (data.status != null){
+                window.alert('Invalid Summoner Name')
+                return
+            }
             let summonername = document.getElementById('summonername1')
             summonername.innerText = data.name
             document.getElementById('level1').innerText = 'Level: ' + data.summonerLevel
@@ -147,7 +238,6 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             }
         }
         
-       // Constructing a wee pie graph
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart1);
         function drawChart1() {
@@ -180,11 +270,9 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
         for(var z = x.rows.length - 1; z > 0; z--) {
             x.deleteRow(z);
         }
-
-
-        for (var player of ranks) {
-
-            if (player['player'].toLowerCase() == summoner1.toLowerCase()) {
+        
+        for (var player of ranks) {            
+            if (player['player'] == summoner1) {
                 for (var season of player['seasons']){
                     var row = x.insertRow(-1)
                     var cell1 = row.insertCell(-1)
@@ -200,93 +288,5 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                 break; 
             }
         }       
-    }
-    
-    
-    for (var record of summonerd) {
-        if (record['player'].toLowerCase() == summoner.toLowerCase()) {
-            document.getElementById('champ1').src = record['champ1']
-            document.getElementById('cs1').innerText = record['cs1']
-            document.getElementById('kda1').innerText = record['kda1']
-            document.getElementById('wr1').innerText = record['wr1']
-            document.getElementById('pl1').innerText = record['pl1']
-
-            document.getElementById('champ2').src = record['champ2']
-            document.getElementById('cs2').innerText = record['cs2']
-            document.getElementById('kda2').innerText = record['kda2']
-            document.getElementById('wr2').innerText = record['wr2']
-            document.getElementById('pl2').innerText = record['pl2']
-
-            document.getElementById('champ3').src = record['champ3']
-            document.getElementById('cs3').innerText = record['cs3']
-            document.getElementById('kda3').innerText = record['kda3']
-            document.getElementById('wr3').innerText = record['wr3']
-            document.getElementById('pl3').innerText = record['pl3']
-
-            document.getElementById('WL').innerText = '10G ' + record['win'] +'W ' + record['lose'] + 'L' 
-            document.getElementById('KDA').innerText = record['kdar'] + ' KDA'
-            document.getElementById('KP').innerText = record['kp'] + 'KP'
-            document.getElementById('recentg').style.display = 'block'
-            document.getElementById('sum1').style.display = 'flex'
-        }
-    }
-    
-    google.charts.setOnLoadCallback(drawChart);
-
-    // Create the data table.
-    function drawChart() {
-        for (var record of summonerd) {
-            if (record['player'].toLowerCase() == summoner.toLowerCase()) {
-                var data = google.visualization.arrayToDataTable([
-                ['Games', 'Results'],
-                ['Wins', parseInt(record['win'])],
-                ['Losses', parseInt(record['lose'])]
-            ]);
-        }
-        var chartoptions = {width:100,
-            height:100,
-            legend: 'none',
-            chartArea: {'width': '100%', 'height': '100%'},
-            pieHole: 0.6,           
-            pieSliceText: "none",
-            tooltipWidth:100,
-            tooltipHeight:100,
-            tooltipFontSize:12
-        };
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, chartoptions);               
-        }
-    }
-    
-    i = 0
-    let t = document.getElementById("pastranks")
-    for(var z = t.rows.length - 1; z > 0; z--) {
-        t.deleteRow(z);
-    }
-
-    for (var player of ranks) {
-        
-        if (player['player'].toLowerCase() == summoner.toLowerCase()) {
-            for (var season of player['seasons']){
-                var row = t.insertRow(-1)
-                var cell1 = row.insertCell(-1)
-                cell1.innerText = season
-                var cell2 = row.insertCell(-1)
-                if (season == 'S3') {
-                    cell2.innerText = player['league'][0]
-                }else {
-                    cell2.innerText = player['ranks'][i]
-                    i++ 
-                }
-            }
-            break;
-            
-        }
-    }
-    
-        
-        
-    
-   
+    }  
 }

@@ -123,13 +123,23 @@
                             </tr>                          
                             </table>
                             <table id = 'recgames' class = 'champstats'>
-                            <tr>
-                                <th colspan = "2">Recent Games</th>
-                            </tr> 
-                            <tr>
-                                <td id = 'recent'></td>
-                                <td id = 'graph'></td>
-                            </tr>
+                                <tr>
+                                    <th colspan = "2">Recent Games</th>
+                                </tr> 
+                                <tr>
+                                    <td id = 'recent'>
+                                        <div class = "recstats">
+                                            <h4 id = "WL">  </h4>
+                                            <h3 id = "KDA">  </h3>
+                                            <h4 id = "KP"> </h4>
+                                        </div>
+                                    </td>
+                                    <td id = 'graph'> 
+                                        <div id = "piechart" class = "piechart">
+                                        
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
                             <table style="width:100%" id ='pastranks'> 
                                 <tr>
@@ -198,15 +208,26 @@
                             <td style="text-align:center" id = 'pl31'></td>
                                 
                         </tr>
+                    </table>
+                    <table id = 'recgames1' class = 'champstats'>
                         <tr>
-                            <th>Recent Games</th>
+                            <th colspan = "2">Recent Games</th>
                         </tr> 
                         <tr>
-                            <td colspan = "5"  id = 'recent1'></td>
+                            <td id = 'recent1'>
+                                <div class = "recstats">
+                                    <h4 id = "WL1">  </h4>
+                                    <h3 id = "KDA1">  </h3>
+                                    <h4 id = "KP1"> </h4>
+                                </div>
+                            </td>
+                            <td id = 'graph1'> 
+                                <div id = "piechart1" class = "piechart">
+                                
+                                </div>
+                            </td>
                         </tr>
-                        
-                      
-                        </table>
+                    </table>
                         <table style="width:100%" id ='pastranks1'> 
                             <tr>
                                 <th>Past Ranks</th>
@@ -222,6 +243,7 @@
     </div> 
     <script type="module" src="{{ url_for('static', filename='summoner.js') }}" ></script>
     <script type="module" src="{{ url_for('static', filename='index.js') }}" ></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </body>
 
 </html>

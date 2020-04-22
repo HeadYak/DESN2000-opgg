@@ -139,19 +139,51 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                 document.getElementById('wr31').innerText = record['wr3']
                 document.getElementById('pl31').innerText = record['pl3']
     
-                document.getElementById('recent1').innerText = record['win'] +'W ' + record['lose'] + 'L' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
+                document.getElementById('WL1').innerText = '10G ' + record['win'] +'W ' + record['lose'] + 'L' 
+                document.getElementById('KDA1').innerText = record['kdar'] + ' KDA'
+                document.getElementById('KP1').innerText = record['kp'] + 'KP'
                 document.getElementById('recentg1').style.display = 'block'
                 document.getElementById('sum2').style.display = 'flex'
             }
         }
+        
+       // Constructing a wee pie graph
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart1);
+        function drawChart1() {
+            for (var record of summonerd) {
+                if (record['player'].toLowerCase() == summoner1.toLowerCase()) {
+                    var data = google.visualization.arrayToDataTable([
+                    ['Games', 'Results'],
+                    ['Wins', parseInt(record['win'])],
+                    ['Losses', parseInt(record['lose'])]
+                ]);
+            }
+            var chartoptions = {width:100,
+                height:100,
+                legend: 'none',
+                chartArea: {'width': '100%', 'height': '100%'},
+                pieHole: 0.6,           
+                pieSliceText: "none",
+                tooltipWidth:100,
+                tooltipHeight:100,
+                tooltipFontSize:12
+            };
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+            chart.draw(data, chartoptions);               
+            }
+        }
+        
         var i = 0
         let x = document.getElementById("pastranks1")
         for(var z = x.rows.length - 1; z > 0; z--) {
             x.deleteRow(z);
         }
 
+
         for (var player of ranks) {
-            
+
             if (player['player'].toLowerCase() == summoner1.toLowerCase()) {
                 for (var season of player['seasons']){
                     var row = x.insertRow(-1)
@@ -165,7 +197,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                         i++ 
                     }
                 }
-                
+                break; 
             }
         }       
     }
@@ -191,11 +223,42 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             document.getElementById('wr3').innerText = record['wr3']
             document.getElementById('pl3').innerText = record['pl3']
 
-            document.getElementById('recent').innerText = record['win'] +'W ' + record['lose'] + 'L' + 'KDA: ' + record['kdar'] + '   KP: ' + record['kp']
+            document.getElementById('WL').innerText = '10G ' + record['win'] +'W ' + record['lose'] + 'L' 
+            document.getElementById('KDA').innerText = record['kdar'] + ' KDA'
+            document.getElementById('KP').innerText = record['kp'] + 'KP'
             document.getElementById('recentg').style.display = 'block'
             document.getElementById('sum1').style.display = 'flex'
         }
     }
+    
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Create the data table.
+    function drawChart() {
+        for (var record of summonerd) {
+            if (record['player'].toLowerCase() == summoner.toLowerCase()) {
+                var data = google.visualization.arrayToDataTable([
+                ['Games', 'Results'],
+                ['Wins', parseInt(record['win'])],
+                ['Losses', parseInt(record['lose'])]
+            ]);
+        }
+        var chartoptions = {width:100,
+            height:100,
+            legend: 'none',
+            chartArea: {'width': '100%', 'height': '100%'},
+            pieHole: 0.6,           
+            pieSliceText: "none",
+            tooltipWidth:100,
+            tooltipHeight:100,
+            tooltipFontSize:12
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, chartoptions);               
+        }
+    }
+    
     i = 0
     let t = document.getElementById("pastranks")
     for(var z = t.rows.length - 1; z > 0; z--) {
@@ -217,6 +280,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                     i++ 
                 }
             }
+            break;
             
         }
     }

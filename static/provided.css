@@ -434,5 +434,38 @@ div.sumstats {
 }
 
 #recgames td{
-  width: 500px;
+  width: 400px;
+}
+
+#recgames td:nth-child(1){
+  width:200px;
+  border-right:0px;
+}
+
+#recgames1 td{
+  width: 400px;
+}
+
+#recgames1 td:nth-child(1){
+  width:200px;
+  border-right:0px;
+}
+
+.piechart div {
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.recstats h4 {
+  color: #808080;
+  font-size: 14px;
+  margin-top: -3px;
+  margin-bottom: -3px
+}
+
+.recstats h3 {
+  color: #000000;
+  font-size: 18px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }

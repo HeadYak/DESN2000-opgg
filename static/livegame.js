@@ -1,11 +1,14 @@
-
+// javascript for the livegame page
 let x = document.getElementById('game')
 const apikey = 'RGAPI-098d1c31-f601-45f7-96f5-20887a7b5255'
 document.getElementById('searchbtn').addEventListener('click', () => {
+    // some quick error checking 
     if ( document.getElementById('search').value == '') {
       window.alert('Please enter summoner name')
     }
+    
     else {
+        // we initialise "table1" and "table2" to be the table representing each of the teams 
         let table1 = document.getElementById("team1")
         for(var z = table1.rows.length - 1; z > 1; z--) {
             table1.deleteRow(z);
@@ -35,6 +38,7 @@ document.getElementById('searchbtn').addEventListener('click', () => {
                         cell2.innerText = queue['description'].replace(' games', '') + '\t\t\t\t\t\t' + queue['map'] 
                     }
                 }
+                // Fill out date and time of match occurrence 
                 const date = new Date(parseInt(game['gameStartTime']))
                 const year = date.getFullYear();
                 const month = date.getMonth();
@@ -43,12 +47,12 @@ document.getElementById('searchbtn').addEventListener('click', () => {
                 var minute =  "0" + date.getMinutes()
                 let timestamp = year + "-" + month + "-" + day + " " + hour + ":" + minute.substr(-2)
                 
-                console.log(game['gameLength'])
-                
+                // length of game when called
                 let elapse =  parseInt(game['gameLength'] / 60 ) + ":" + parseInt(game['gameLength'] % 60 )
 
                 document.getElementById('time').innerText = timestamp + ' ' + '|'  + ' ' + elapse
-
+                
+                // We insert each player into the given table (there should be ten players inserted)
                 for (var player of game['participants']) {
                     
                     let t2 = document.getElementById('team1')    
@@ -59,13 +63,16 @@ document.getElementById('searchbtn').addEventListener('click', () => {
                     var row = t2.insertRow(-1)
                     row.id = player['summonerName']
                     var champion = row.insertCell(0)
+                    // Player summoner portrait
                     var img = document.createElement('img')
                     img.src = "http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/" + getChampName(player['championId']) + ".png"
                     img.height = 60;
                     img.width = 60;
                     champion.appendChild(img)
+                    // Player name
                     var playername = row.insertCell(-1)
                     playername.innerText = player['summonerName']
+                    // Player runes
                     var rune1 = row.insertCell(-1)
                     var prune = document.createElement('img')
                     prune.src = `https://opgg-static.akamaized.net/images/lol/perk/${player['perks']['perkIds'][0]}.png?image=q_auto&v=1586932751`
@@ -78,7 +85,7 @@ document.getElementById('searchbtn').addEventListener('click', () => {
                     srune.height = 30
                     srune.width = 30
                     rune2.appendChild(srune)
-                    //console.log(player['summonerId'])
+                    // Summoner rank
                     fetch(`https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/${player['summonerId']}?api_key=${apikey}`)
                     .then(res => (res.json()))
                     .then(league => {
@@ -113,7 +120,7 @@ document.getElementById('searchbtn').addEventListener('click', () => {
 })
 
 
-
+// Information to refer to
 
 function getChampName(id) {
     switch(id){

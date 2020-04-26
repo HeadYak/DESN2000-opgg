@@ -27,7 +27,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
     const summoner = document.getElementById('search').value 
     
     document.getElementById('search').value = ''
-    //console.log('hello')
+    
     fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=${apikey}`, options)
     .then(res => (res.json()))
     .then(data => {
@@ -37,23 +37,24 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             return
         }
         
+        // Initially insert summoner's name and summoner's profile picture 
         let summonername = document.getElementById('summonername')
         summonername.innerText = data.name
         document.getElementById('level').innerText = 'Level: ' + data.summonerLevel
-        //content.insertBefore(summonerimg, content.children[2])
         
         summonerimg = document.getElementById('sumimg')
         summonerimg.src = `https://opgg-static.akamaized.net/images/profile_icons/profileIcon${data.profileIconId}.jpg?image=q_auto&v=1518361200`
         summonerimg.width = 150
         summonerimg.length = 150
         let summonerid = data.id
+        
         fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerid}?api_key=${apikey}`)
         .then(res => (res.json()))
         .then(league => {
-            //console.log(league)
+            // We fill out their ranked stats
             let queue = document.getElementById('queue')
             queue.innerText = ranked[league[0].queueType] 
-            
+            // Creating the logo for their rank
             let rankimage = document.getElementById('rankimg')
             rankimage.src = 'https://opgg-static.akamaized.net/images/medals/' + league[0].tier.toLowerCase() + '_1.png?image=q_auto&v=1'
             rankimage.height = 100
@@ -65,33 +66,11 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             let winrate = floatie.toFixed(1)
             document.getElementById('WR').innerText = "Win Ratio " + winrate + "%"
         })
-        /*fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/${acctid}?endIndex=5&beginIndex=0&api_key=${apikey}`)
-        .then(res => res.json())
-        .then(matchhist => {
-            for (const match of matchhist['matches']) {
-                fetch(`https://cors-anywhere.herokuapp.com/https://oc1.api.riotgames.com/lol/match/v4/matches/${match['gameId']}?api_key=${apikey}`)
-                .then( res => res.json())
-                .then(matchinfo => {
-                    let x = document.getElementById("matchhist")
-                    var row = x.insertRow(-1)
-                    var time = row.insertCell(0)
-                    var mode = row.insertCell(-1)
-                    var pr = row.insertCell(-1)
-                    const date = new Date(parseInt(matchinfo['gameCreation']))
-                    const year = date.getFullYear();
-                    const month = date.getMonth();
-                    const day = date.getDate();
-                    const hour = date.getHours()
-                    const minute =  "0" + date.getMinutes()
-                    let timestamp = year + "-" + month + "-" + day + " " + hour + ":" + minute.substr(-2)
-                    time.innerText = timestamp 
-                    
-                    console.log(matchinfo)
-                })
-            }
-        })*/
+        
+        // We write information for each of the player's top three champions
         for (var record of summonerd) {
             if (record['player'].toLowerCase() == summoner.toLowerCase()) {
+            
                 document.getElementById('champ1').src = record['champ1']
                 document.getElementById('cs1').innerText = record['cs1']
                 document.getElementById('kda1').innerText = record['kda1']
@@ -110,6 +89,7 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
                 document.getElementById('wr3').innerText = record['wr3']
                 document.getElementById('pl3').innerText = record['pl3']
     
+                // We provide information for the summoner's last ten games
                 document.getElementById('WL').innerText = '10G ' + record['win'] +'W ' + record['lose'] + 'L' 
                 document.getElementById('KDA').innerText = record['kdar'] + ' KDA'
                 document.getElementById('KP').innerText = record['kp'] + 'KP'
@@ -118,20 +98,22 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             }
         }
 
-    // Constructing a wee pie graph
+    // Constructing a pie graph to represent the last ten games of the player
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
-    // Create the data table.
+    // Creating the chart
     function drawChart() {
         for (var record of summonerd) {
             if (record['player'].toLowerCase() == summoner.toLowerCase()) {
+                // We fill out the contents of the pie graph
                 var data = google.visualization.arrayToDataTable([
                 ['Games', 'Results'],
                 ['Wins', parseInt(record['win'])],
                 ['Losses', parseInt(record['lose'])]
             ]);
         }
+        // Some customisation for the pie graph
         var chartoptions = {width:100,
             height:100,
             legend: 'none',
@@ -142,17 +124,19 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             tooltipHeight:100,
             tooltipFontSize:12
         };
-        // Instantiate and draw our chart, passing in some options.
+        // We initiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, chartoptions);               
         }
     }
+    
+        // We now input the summoner's past ranks
         i = 0
         let t = document.getElementById("pastranks")
         for(var z = t.rows.length - 1; z > 0; z--) {
             t.deleteRow(z);
         }
-        console.log(summoner.toLowerCase())
+        
         for (var player of ranks) {
             
             if (player['player'] == summoner) {
@@ -172,6 +156,8 @@ function summoner(apikey, summonerimg, summonerimg1, summonerd) {
             }
         }
     })
+    
+    // We do the exact same as the previous segment, except we do it for the second summoner (if they are searched up)
     if ( document.getElementById('search1').value != '') {
         const summoner1 = document.getElementById('search1').value 
         let content1 = document.getElementById('content1')

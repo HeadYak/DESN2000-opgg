@@ -72,6 +72,7 @@ function showtable(){
             champimage.height = 100
             champimage.width = 100
 
+            // fill out the contents of each champion information bar 
             for (item of myArr) {
                 if (item['champion'] == name.innerText) {
                     document.getElementById('spell1').src = item['spell1']

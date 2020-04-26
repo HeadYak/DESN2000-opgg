@@ -5,6 +5,8 @@ that they would otherwise be unable to access which allows them to improve their
 
 Deliverable 1 has been created using a shared Google Docs file.
 
+Video demo of site: https://drive.google.com/file/d/1F2lOlMFRpnfelgAYp6pYw8cYT5d2dpwy/view?fbclid=IwAR2OvI6vl8qgpg2cGuUHoSCmGMvIRKW3qGhjR_06xr6lLjdA6i8GuaRiPYs
+
 Team Members:
 
 - Edwin Tang z5257107
